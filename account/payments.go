@@ -12,7 +12,6 @@ import (
 	"net/http"
 	"sort"
 	"strings"
-
 	"time"
 
 	breezservice "github.com/breez/breez/breez"
@@ -228,9 +227,17 @@ func (a *Service) sendPaymentForRequest(paymentRequest string, amountSatoshi int
 		maxParts = 1
 	}
 	// At this stage we are ready to send asynchronously the payment through the daemon.
+	var timeoutSeconds int32 = 60
+	if useTor, _ := a.breezDB.GetUseTor(); useTor {
+		/* @nochiel: If Tor is active, extend the timeout to avoid
+		frequent payment timeout failures observed in testing.
+		*/
+		timeoutSeconds *= 2
+	}
+
 	return a.sendPayment(decodedReq.PaymentHash, decodedReq, &routerrpc.SendPaymentRequest{
 		PaymentRequest: paymentRequest,
-		TimeoutSeconds: 60,
+		TimeoutSeconds: timeoutSeconds,
 		FeeLimitSat:    math.MaxInt64,
 		MaxParts:       maxParts,
 		Amt:            amountSatoshi,
@@ -447,7 +454,6 @@ func (a *Service) sendPayment(paymentHash string, payReq *lnrpc.PayReq, sendRequ
 	}
 	a.log.Infof("sendPaymentForRequest finished successfully")
 	a.syncSentPayments()
-	// TODO(@nochiel) FINDOUT Should we notify client here? If we do, what breaks?
 	// a.notifyPaymentResult(true, sendRequest.PaymentRequest, paymentHash, "", "")
 	return "", nil
 }
