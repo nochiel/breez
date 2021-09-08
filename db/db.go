@@ -51,6 +51,9 @@ const (
 
 	//lnurl-pay
 	lnurlPayBucket = "lnurl-pay-bucket"
+
+	//Tor
+	torBucket = "tor"
 )
 
 var (
@@ -179,6 +182,11 @@ func openDB(dbPath string, log btclog.Logger) (*DB, error) {
 		}
 
 		_, err = tx.CreateBucketIfNotExists([]byte(lnurlPayBucket))
+		if err != nil {
+			return err
+		}
+
+		_, err = tx.CreateBucketIfNotExists([]byte(torBucket))
 		if err != nil {
 			return err
 		}

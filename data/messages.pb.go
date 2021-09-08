@@ -5256,6 +5256,69 @@ func (x *DownloadBackupResponse) GetFiles() []string {
 	return nil
 }
 
+type TorConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Control string `protobuf:"bytes,1,opt,name=control,proto3" json:"control,omitempty"`
+	Http    string `protobuf:"bytes,2,opt,name=http,proto3" json:"http,omitempty"`
+	Socks   string `protobuf:"bytes,3,opt,name=socks,proto3" json:"socks,omitempty"`
+}
+
+func (x *TorConfig) Reset() {
+	*x = TorConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_proto_msgTypes[75]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TorConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TorConfig) ProtoMessage() {}
+
+func (x *TorConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_proto_msgTypes[75]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TorConfig.ProtoReflect.Descriptor instead.
+func (*TorConfig) Descriptor() ([]byte, []int) {
+	return file_messages_proto_rawDescGZIP(), []int{75}
+}
+
+func (x *TorConfig) GetControl() string {
+	if x != nil {
+		return x.Control
+	}
+	return ""
+}
+
+func (x *TorConfig) GetHttp() string {
+	if x != nil {
+		return x.Http
+	}
+	return ""
+}
+
+func (x *TorConfig) GetSocks() string {
+	if x != nil {
+		return x.Socks
+	}
+	return ""
+}
+
 var File_messages_proto protoreflect.FileDescriptor
 
 var file_messages_proto_rawDesc = []byte{
@@ -5972,48 +6035,53 @@ var file_messages_proto_rawDesc = []byte{
 	0x22, 0x2e, 0x0a, 0x16, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x6f, 0x61, 0x64, 0x42, 0x61, 0x63, 0x6b,
 	0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x66, 0x69,
 	0x6c, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x66, 0x69, 0x6c, 0x65, 0x73,
-	0x2a, 0x72, 0x0a, 0x09, 0x53, 0x77, 0x61, 0x70, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x12, 0x0c, 0x0a,
-	0x08, 0x4e, 0x4f, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12, 0x46,
-	0x55, 0x4e, 0x44, 0x53, 0x5f, 0x45, 0x58, 0x43, 0x45, 0x45, 0x44, 0x5f, 0x4c, 0x49, 0x4d, 0x49,
-	0x54, 0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c, 0x54, 0x58, 0x5f, 0x54, 0x4f, 0x4f, 0x5f, 0x53, 0x4d,
-	0x41, 0x4c, 0x4c, 0x10, 0x02, 0x12, 0x1b, 0x0a, 0x17, 0x49, 0x4e, 0x56, 0x4f, 0x49, 0x43, 0x45,
-	0x5f, 0x41, 0x4d, 0x4f, 0x55, 0x4e, 0x54, 0x5f, 0x4d, 0x49, 0x53, 0x4d, 0x41, 0x54, 0x43, 0x48,
-	0x10, 0x03, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x57, 0x41, 0x50, 0x5f, 0x45, 0x58, 0x50, 0x49, 0x52,
-	0x45, 0x44, 0x10, 0x04, 0x32, 0x91, 0x04, 0x0a, 0x08, 0x42, 0x72, 0x65, 0x65, 0x7a, 0x41, 0x50,
-	0x49, 0x12, 0x33, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x4c, 0x53, 0x50, 0x4c, 0x69, 0x73, 0x74, 0x12,
-	0x14, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x4c, 0x53, 0x50, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0d, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x4c, 0x53, 0x50,
-	0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x0c, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
-	0x74, 0x54, 0x6f, 0x4c, 0x53, 0x50, 0x12, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x43, 0x6f,
-	0x6e, 0x6e, 0x65, 0x63, 0x74, 0x4c, 0x53, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x4c, 0x53,
-	0x50, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x41, 0x0a, 0x0b, 0x41, 0x64, 0x64, 0x46,
-	0x75, 0x6e, 0x64, 0x49, 0x6e, 0x69, 0x74, 0x12, 0x18, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x41,
-	0x64, 0x64, 0x46, 0x75, 0x6e, 0x64, 0x49, 0x6e, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x16, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x41, 0x64, 0x64, 0x46, 0x75, 0x6e, 0x64,
-	0x49, 0x6e, 0x69, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x41, 0x0a, 0x0d, 0x47,
-	0x65, 0x74, 0x46, 0x75, 0x6e, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x17, 0x2e, 0x64,
-	0x61, 0x74, 0x61, 0x2e, 0x46, 0x75, 0x6e, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x46, 0x75, 0x6e,
-	0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x3e,
-	0x0a, 0x0a, 0x41, 0x64, 0x64, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x12, 0x17, 0x2e, 0x64,
-	0x61, 0x74, 0x61, 0x2e, 0x41, 0x64, 0x64, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x41, 0x64, 0x64,
-	0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x3e,
-	0x0a, 0x0a, 0x50, 0x61, 0x79, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x12, 0x17, 0x2e, 0x64,
-	0x61, 0x74, 0x61, 0x2e, 0x50, 0x61, 0x79, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x50, 0x61, 0x79,
-	0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x47,
-	0x0a, 0x0d, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x65, 0x6d, 0x6f, 0x6e, 0x12,
-	0x1a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61,
-	0x65, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x2e, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x65, 0x6d, 0x6f, 0x6e,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x3f, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x50,
-	0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x12, 0x19, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x4c,
-	0x69, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x12, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e,
-	0x74, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2f, 0x64, 0x61,
-	0x74, 0x61, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x4f, 0x0a, 0x09, 0x54, 0x6f, 0x72, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x18, 0x0a,
+	0x07, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x68, 0x74, 0x74, 0x70, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x68, 0x74, 0x74, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x73,
+	0x6f, 0x63, 0x6b, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x73, 0x6f, 0x63, 0x6b,
+	0x73, 0x2a, 0x72, 0x0a, 0x09, 0x53, 0x77, 0x61, 0x70, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x12, 0x0c,
+	0x0a, 0x08, 0x4e, 0x4f, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12,
+	0x46, 0x55, 0x4e, 0x44, 0x53, 0x5f, 0x45, 0x58, 0x43, 0x45, 0x45, 0x44, 0x5f, 0x4c, 0x49, 0x4d,
+	0x49, 0x54, 0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c, 0x54, 0x58, 0x5f, 0x54, 0x4f, 0x4f, 0x5f, 0x53,
+	0x4d, 0x41, 0x4c, 0x4c, 0x10, 0x02, 0x12, 0x1b, 0x0a, 0x17, 0x49, 0x4e, 0x56, 0x4f, 0x49, 0x43,
+	0x45, 0x5f, 0x41, 0x4d, 0x4f, 0x55, 0x4e, 0x54, 0x5f, 0x4d, 0x49, 0x53, 0x4d, 0x41, 0x54, 0x43,
+	0x48, 0x10, 0x03, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x57, 0x41, 0x50, 0x5f, 0x45, 0x58, 0x50, 0x49,
+	0x52, 0x45, 0x44, 0x10, 0x04, 0x32, 0x91, 0x04, 0x0a, 0x08, 0x42, 0x72, 0x65, 0x65, 0x7a, 0x41,
+	0x50, 0x49, 0x12, 0x33, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x4c, 0x53, 0x50, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x14, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x4c, 0x53, 0x50, 0x4c, 0x69, 0x73, 0x74, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0d, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x4c, 0x53,
+	0x50, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x0c, 0x43, 0x6f, 0x6e, 0x6e, 0x65,
+	0x63, 0x74, 0x54, 0x6f, 0x4c, 0x53, 0x50, 0x12, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x43,
+	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x4c, 0x53, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x4c,
+	0x53, 0x50, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x41, 0x0a, 0x0b, 0x41, 0x64, 0x64,
+	0x46, 0x75, 0x6e, 0x64, 0x49, 0x6e, 0x69, 0x74, 0x12, 0x18, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e,
+	0x41, 0x64, 0x64, 0x46, 0x75, 0x6e, 0x64, 0x49, 0x6e, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x16, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x41, 0x64, 0x64, 0x46, 0x75, 0x6e,
+	0x64, 0x49, 0x6e, 0x69, 0x74, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x41, 0x0a, 0x0d,
+	0x47, 0x65, 0x74, 0x46, 0x75, 0x6e, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x17, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x2e, 0x46, 0x75, 0x6e, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x46, 0x75,
+	0x6e, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12,
+	0x3e, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x12, 0x17, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x2e, 0x41, 0x64, 0x64, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x41, 0x64,
+	0x64, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12,
+	0x3e, 0x0a, 0x0a, 0x50, 0x61, 0x79, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x12, 0x17, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x2e, 0x50, 0x61, 0x79, 0x49, 0x6e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x50, 0x61,
+	0x79, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
+	0x47, 0x0a, 0x0d, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x65, 0x6d, 0x6f, 0x6e,
+	0x12, 0x1a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44,
+	0x61, 0x65, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x64,
+	0x61, 0x74, 0x61, 0x2e, 0x52, 0x65, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x65, 0x6d, 0x6f,
+	0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x3f, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74,
+	0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x12, 0x19, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e,
+	0x4c, 0x69, 0x73, 0x74, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65,
+	0x6e, 0x74, 0x73, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2f, 0x64,
+	0x61, 0x74, 0x61, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -6028,101 +6096,105 @@ func file_messages_proto_rawDescGZIP() []byte {
 	return file_messages_proto_rawDescData
 }
 
-var file_messages_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 80)
-var file_messages_proto_goTypes = []interface{}{
-	(SwapError)(0),                                // 0: data.SwapError
-	(Account_AccountStatus)(0),                    // 1: data.Account.AccountStatus
-	(Payment_PaymentType)(0),                      // 2: data.Payment.PaymentType
-	(NotificationEvent_NotificationType)(0),       // 3: data.NotificationEvent.NotificationType
-	(*ListPaymentsRequest)(nil),                   // 4: data.ListPaymentsRequest
-	(*RestartDaemonRequest)(nil),                  // 5: data.RestartDaemonRequest
-	(*RestartDaemonReply)(nil),                    // 6: data.RestartDaemonReply
-	(*AddFundInitRequest)(nil),                    // 7: data.AddFundInitRequest
-	(*FundStatusRequest)(nil),                     // 8: data.FundStatusRequest
-	(*AddInvoiceReply)(nil),                       // 9: data.AddInvoiceReply
-	(*ChainStatus)(nil),                           // 10: data.ChainStatus
-	(*Account)(nil),                               // 11: data.Account
-	(*Payment)(nil),                               // 12: data.Payment
-	(*PaymentsList)(nil),                          // 13: data.PaymentsList
-	(*PaymentResponse)(nil),                       // 14: data.PaymentResponse
-	(*SendWalletCoinsRequest)(nil),                // 15: data.SendWalletCoinsRequest
-	(*PayInvoiceRequest)(nil),                     // 16: data.PayInvoiceRequest
-	(*SpontaneousPaymentRequest)(nil),             // 17: data.SpontaneousPaymentRequest
-	(*InvoiceMemo)(nil),                           // 18: data.InvoiceMemo
-	(*AddInvoiceRequest)(nil),                     // 19: data.AddInvoiceRequest
-	(*Invoice)(nil),                               // 20: data.Invoice
-	(*SyncLSPChannelsRequest)(nil),                // 21: data.SyncLSPChannelsRequest
-	(*SyncLSPChannelsResponse)(nil),               // 22: data.SyncLSPChannelsResponse
-	(*UnconfirmedChannelsStatus)(nil),             // 23: data.UnconfirmedChannelsStatus
-	(*UnconfirmedChannelStatus)(nil),              // 24: data.UnconfirmedChannelStatus
-	(*CheckLSPClosedChannelMismatchRequest)(nil),  // 25: data.CheckLSPClosedChannelMismatchRequest
-	(*CheckLSPClosedChannelMismatchResponse)(nil), // 26: data.CheckLSPClosedChannelMismatchResponse
-	(*ResetClosedChannelChainInfoRequest)(nil),    // 27: data.ResetClosedChannelChainInfoRequest
-	(*ResetClosedChannelChainInfoReply)(nil),      // 28: data.ResetClosedChannelChainInfoReply
-	(*NotificationEvent)(nil),                     // 29: data.NotificationEvent
-	(*AddFundInitReply)(nil),                      // 30: data.AddFundInitReply
-	(*AddFundReply)(nil),                          // 31: data.AddFundReply
-	(*RefundRequest)(nil),                         // 32: data.RefundRequest
-	(*AddFundError)(nil),                          // 33: data.AddFundError
-	(*FundStatusReply)(nil),                       // 34: data.FundStatusReply
-	(*RemoveFundRequest)(nil),                     // 35: data.RemoveFundRequest
-	(*RemoveFundReply)(nil),                       // 36: data.RemoveFundReply
-	(*SwapAddressInfo)(nil),                       // 37: data.SwapAddressInfo
-	(*SwapAddressList)(nil),                       // 38: data.SwapAddressList
-	(*CreateRatchetSessionRequest)(nil),           // 39: data.CreateRatchetSessionRequest
-	(*CreateRatchetSessionReply)(nil),             // 40: data.CreateRatchetSessionReply
-	(*RatchetSessionInfoReply)(nil),               // 41: data.RatchetSessionInfoReply
-	(*RatchetSessionSetInfoRequest)(nil),          // 42: data.RatchetSessionSetInfoRequest
-	(*RatchetEncryptRequest)(nil),                 // 43: data.RatchetEncryptRequest
-	(*RatchetDecryptRequest)(nil),                 // 44: data.RatchetDecryptRequest
-	(*BootstrapFilesRequest)(nil),                 // 45: data.BootstrapFilesRequest
-	(*Peers)(nil),                                 // 46: data.Peers
-	(*TxSpentURL)(nil),                            // 47: data.TxSpentURL
-	(*Rate)(nil),                                  // 48: data.rate
-	(*Rates)(nil),                                 // 49: data.Rates
-	(*LSPInformation)(nil),                        // 50: data.LSPInformation
-	(*LSPListRequest)(nil),                        // 51: data.LSPListRequest
-	(*LSPList)(nil),                               // 52: data.LSPList
-	(*LSPActivity)(nil),                           // 53: data.LSPActivity
-	(*ConnectLSPRequest)(nil),                     // 54: data.ConnectLSPRequest
-	(*ConnectLSPReply)(nil),                       // 55: data.ConnectLSPReply
-	(*LNUrlResponse)(nil),                         // 56: data.LNUrlResponse
-	(*LNUrlWithdraw)(nil),                         // 57: data.LNUrlWithdraw
-	(*LNURLChannel)(nil),                          // 58: data.LNURLChannel
-	(*LNURLAuth)(nil),                             // 59: data.LNURLAuth
-	(*LNUrlPayMetadata)(nil),                      // 60: data.LNUrlPayMetadata
-	(*LNURLPayResponse1)(nil),                     // 61: data.LNURLPayResponse1
-	(*SuccessAction)(nil),                         // 62: data.SuccessAction
-	(*LNUrlPayInfo)(nil),                          // 63: data.LNUrlPayInfo
-	(*LNUrlPayInfoList)(nil),                      // 64: data.LNUrlPayInfoList
-	(*ReverseSwapRequest)(nil),                    // 65: data.ReverseSwapRequest
-	(*ReverseSwap)(nil),                           // 66: data.ReverseSwap
-	(*ReverseSwapFees)(nil),                       // 67: data.ReverseSwapFees
-	(*ReverseSwapInfo)(nil),                       // 68: data.ReverseSwapInfo
-	(*ReverseSwapPaymentRequest)(nil),             // 69: data.ReverseSwapPaymentRequest
-	(*PushNotificationDetails)(nil),               // 70: data.PushNotificationDetails
-	(*ReverseSwapPaymentStatus)(nil),              // 71: data.ReverseSwapPaymentStatus
-	(*ReverseSwapPaymentStatuses)(nil),            // 72: data.ReverseSwapPaymentStatuses
-	(*ReverseSwapClaimFee)(nil),                   // 73: data.ReverseSwapClaimFee
-	(*ClaimFeeEstimates)(nil),                     // 74: data.ClaimFeeEstimates
-	(*UnspendLockupInformation)(nil),              // 75: data.UnspendLockupInformation
-	(*TransactionDetails)(nil),                    // 76: data.TransactionDetails
-	(*SweepAllCoinsTransactions)(nil),             // 77: data.SweepAllCoinsTransactions
-	(*DownloadBackupResponse)(nil),                // 78: data.DownloadBackupResponse
-	nil,                                           // 79: data.SpontaneousPaymentRequest.TlvEntry
-	nil,                                           // 80: data.LSPList.LspsEntry
-	nil,                                           // 81: data.LSPActivity.ActivityEntry
-	nil,                                           // 82: data.ClaimFeeEstimates.FeesEntry
-	nil,                                           // 83: data.SweepAllCoinsTransactions.TransactionsEntry
-}
+var (
+	file_messages_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+	file_messages_proto_msgTypes  = make([]protoimpl.MessageInfo, 81)
+	file_messages_proto_goTypes   = []interface{}{
+		(SwapError)(0),                                // 0: data.SwapError
+		(Account_AccountStatus)(0),                    // 1: data.Account.AccountStatus
+		(Payment_PaymentType)(0),                      // 2: data.Payment.PaymentType
+		(NotificationEvent_NotificationType)(0),       // 3: data.NotificationEvent.NotificationType
+		(*ListPaymentsRequest)(nil),                   // 4: data.ListPaymentsRequest
+		(*RestartDaemonRequest)(nil),                  // 5: data.RestartDaemonRequest
+		(*RestartDaemonReply)(nil),                    // 6: data.RestartDaemonReply
+		(*AddFundInitRequest)(nil),                    // 7: data.AddFundInitRequest
+		(*FundStatusRequest)(nil),                     // 8: data.FundStatusRequest
+		(*AddInvoiceReply)(nil),                       // 9: data.AddInvoiceReply
+		(*ChainStatus)(nil),                           // 10: data.ChainStatus
+		(*Account)(nil),                               // 11: data.Account
+		(*Payment)(nil),                               // 12: data.Payment
+		(*PaymentsList)(nil),                          // 13: data.PaymentsList
+		(*PaymentResponse)(nil),                       // 14: data.PaymentResponse
+		(*SendWalletCoinsRequest)(nil),                // 15: data.SendWalletCoinsRequest
+		(*PayInvoiceRequest)(nil),                     // 16: data.PayInvoiceRequest
+		(*SpontaneousPaymentRequest)(nil),             // 17: data.SpontaneousPaymentRequest
+		(*InvoiceMemo)(nil),                           // 18: data.InvoiceMemo
+		(*AddInvoiceRequest)(nil),                     // 19: data.AddInvoiceRequest
+		(*Invoice)(nil),                               // 20: data.Invoice
+		(*SyncLSPChannelsRequest)(nil),                // 21: data.SyncLSPChannelsRequest
+		(*SyncLSPChannelsResponse)(nil),               // 22: data.SyncLSPChannelsResponse
+		(*UnconfirmedChannelsStatus)(nil),             // 23: data.UnconfirmedChannelsStatus
+		(*UnconfirmedChannelStatus)(nil),              // 24: data.UnconfirmedChannelStatus
+		(*CheckLSPClosedChannelMismatchRequest)(nil),  // 25: data.CheckLSPClosedChannelMismatchRequest
+		(*CheckLSPClosedChannelMismatchResponse)(nil), // 26: data.CheckLSPClosedChannelMismatchResponse
+		(*ResetClosedChannelChainInfoRequest)(nil),    // 27: data.ResetClosedChannelChainInfoRequest
+		(*ResetClosedChannelChainInfoReply)(nil),      // 28: data.ResetClosedChannelChainInfoReply
+		(*NotificationEvent)(nil),                     // 29: data.NotificationEvent
+		(*AddFundInitReply)(nil),                      // 30: data.AddFundInitReply
+		(*AddFundReply)(nil),                          // 31: data.AddFundReply
+		(*RefundRequest)(nil),                         // 32: data.RefundRequest
+		(*AddFundError)(nil),                          // 33: data.AddFundError
+		(*FundStatusReply)(nil),                       // 34: data.FundStatusReply
+		(*RemoveFundRequest)(nil),                     // 35: data.RemoveFundRequest
+		(*RemoveFundReply)(nil),                       // 36: data.RemoveFundReply
+		(*SwapAddressInfo)(nil),                       // 37: data.SwapAddressInfo
+		(*SwapAddressList)(nil),                       // 38: data.SwapAddressList
+		(*CreateRatchetSessionRequest)(nil),           // 39: data.CreateRatchetSessionRequest
+		(*CreateRatchetSessionReply)(nil),             // 40: data.CreateRatchetSessionReply
+		(*RatchetSessionInfoReply)(nil),               // 41: data.RatchetSessionInfoReply
+		(*RatchetSessionSetInfoRequest)(nil),          // 42: data.RatchetSessionSetInfoRequest
+		(*RatchetEncryptRequest)(nil),                 // 43: data.RatchetEncryptRequest
+		(*RatchetDecryptRequest)(nil),                 // 44: data.RatchetDecryptRequest
+		(*BootstrapFilesRequest)(nil),                 // 45: data.BootstrapFilesRequest
+		(*Peers)(nil),                                 // 46: data.Peers
+		(*TxSpentURL)(nil),                            // 47: data.TxSpentURL
+		(*Rate)(nil),                                  // 48: data.rate
+		(*Rates)(nil),                                 // 49: data.Rates
+		(*LSPInformation)(nil),                        // 50: data.LSPInformation
+		(*LSPListRequest)(nil),                        // 51: data.LSPListRequest
+		(*LSPList)(nil),                               // 52: data.LSPList
+		(*LSPActivity)(nil),                           // 53: data.LSPActivity
+		(*ConnectLSPRequest)(nil),                     // 54: data.ConnectLSPRequest
+		(*ConnectLSPReply)(nil),                       // 55: data.ConnectLSPReply
+		(*LNUrlResponse)(nil),                         // 56: data.LNUrlResponse
+		(*LNUrlWithdraw)(nil),                         // 57: data.LNUrlWithdraw
+		(*LNURLChannel)(nil),                          // 58: data.LNURLChannel
+		(*LNURLAuth)(nil),                             // 59: data.LNURLAuth
+		(*LNUrlPayMetadata)(nil),                      // 60: data.LNUrlPayMetadata
+		(*LNURLPayResponse1)(nil),                     // 61: data.LNURLPayResponse1
+		(*SuccessAction)(nil),                         // 62: data.SuccessAction
+		(*LNUrlPayInfo)(nil),                          // 63: data.LNUrlPayInfo
+		(*LNUrlPayInfoList)(nil),                      // 64: data.LNUrlPayInfoList
+		(*ReverseSwapRequest)(nil),                    // 65: data.ReverseSwapRequest
+		(*ReverseSwap)(nil),                           // 66: data.ReverseSwap
+		(*ReverseSwapFees)(nil),                       // 67: data.ReverseSwapFees
+		(*ReverseSwapInfo)(nil),                       // 68: data.ReverseSwapInfo
+		(*ReverseSwapPaymentRequest)(nil),             // 69: data.ReverseSwapPaymentRequest
+		(*PushNotificationDetails)(nil),               // 70: data.PushNotificationDetails
+		(*ReverseSwapPaymentStatus)(nil),              // 71: data.ReverseSwapPaymentStatus
+		(*ReverseSwapPaymentStatuses)(nil),            // 72: data.ReverseSwapPaymentStatuses
+		(*ReverseSwapClaimFee)(nil),                   // 73: data.ReverseSwapClaimFee
+		(*ClaimFeeEstimates)(nil),                     // 74: data.ClaimFeeEstimates
+		(*UnspendLockupInformation)(nil),              // 75: data.UnspendLockupInformation
+		(*TransactionDetails)(nil),                    // 76: data.TransactionDetails
+		(*SweepAllCoinsTransactions)(nil),             // 77: data.SweepAllCoinsTransactions
+		(*DownloadBackupResponse)(nil),                // 78: data.DownloadBackupResponse
+		(*TorConfig)(nil),                             // 79: data.TorConfig
+		nil,                                           // 80: data.SpontaneousPaymentRequest.TlvEntry
+		nil,                                           // 81: data.LSPList.LspsEntry
+		nil,                                           // 82: data.LSPActivity.ActivityEntry
+		nil,                                           // 83: data.ClaimFeeEstimates.FeesEntry
+		nil,                                           // 84: data.SweepAllCoinsTransactions.TransactionsEntry
+	}
+)
+
 var file_messages_proto_depIdxs = []int32{
 	1,  // 0: data.Account.status:type_name -> data.Account.AccountStatus
 	2,  // 1: data.Payment.type:type_name -> data.Payment.PaymentType
 	18, // 2: data.Payment.invoiceMemo:type_name -> data.InvoiceMemo
 	63, // 3: data.Payment.lnurlPayInfo:type_name -> data.LNUrlPayInfo
 	12, // 4: data.PaymentsList.paymentsList:type_name -> data.Payment
-	79, // 5: data.SpontaneousPaymentRequest.tlv:type_name -> data.SpontaneousPaymentRequest.TlvEntry
+	80, // 5: data.SpontaneousPaymentRequest.tlv:type_name -> data.SpontaneousPaymentRequest.TlvEntry
 	18, // 6: data.AddInvoiceRequest.invoiceDetails:type_name -> data.InvoiceMemo
 	50, // 7: data.AddInvoiceRequest.lspInfo:type_name -> data.LSPInformation
 	18, // 8: data.Invoice.memo:type_name -> data.InvoiceMemo
@@ -6137,8 +6209,8 @@ var file_messages_proto_depIdxs = []int32{
 	0,  // 17: data.SwapAddressInfo.swapError:type_name -> data.SwapError
 	37, // 18: data.SwapAddressList.addresses:type_name -> data.SwapAddressInfo
 	48, // 19: data.Rates.rates:type_name -> data.rate
-	80, // 20: data.LSPList.lsps:type_name -> data.LSPList.LspsEntry
-	81, // 21: data.LSPActivity.activity:type_name -> data.LSPActivity.ActivityEntry
+	81, // 20: data.LSPList.lsps:type_name -> data.LSPList.LspsEntry
+	82, // 21: data.LSPActivity.activity:type_name -> data.LSPActivity.ActivityEntry
 	57, // 22: data.LNUrlResponse.withdraw:type_name -> data.LNUrlWithdraw
 	58, // 23: data.LNUrlResponse.channel:type_name -> data.LNURLChannel
 	59, // 24: data.LNUrlResponse.auth:type_name -> data.LNURLAuth
@@ -6150,8 +6222,8 @@ var file_messages_proto_depIdxs = []int32{
 	67, // 30: data.ReverseSwapInfo.fees:type_name -> data.ReverseSwapFees
 	70, // 31: data.ReverseSwapPaymentRequest.push_notification_details:type_name -> data.PushNotificationDetails
 	71, // 32: data.ReverseSwapPaymentStatuses.payments_status:type_name -> data.ReverseSwapPaymentStatus
-	82, // 33: data.ClaimFeeEstimates.fees:type_name -> data.ClaimFeeEstimates.FeesEntry
-	83, // 34: data.SweepAllCoinsTransactions.transactions:type_name -> data.SweepAllCoinsTransactions.TransactionsEntry
+	83, // 33: data.ClaimFeeEstimates.fees:type_name -> data.ClaimFeeEstimates.FeesEntry
+	84, // 34: data.SweepAllCoinsTransactions.transactions:type_name -> data.SweepAllCoinsTransactions.TransactionsEntry
 	50, // 35: data.LSPList.LspsEntry.value:type_name -> data.LSPInformation
 	76, // 36: data.SweepAllCoinsTransactions.TransactionsEntry.value:type_name -> data.TransactionDetails
 	51, // 37: data.BreezAPI.GetLSPList:input_type -> data.LSPListRequest
@@ -7083,6 +7155,18 @@ func file_messages_proto_init() {
 				return nil
 			}
 		}
+		file_messages_proto_msgTypes[75].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TorConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_messages_proto_msgTypes[52].OneofWrappers = []interface{}{
 		(*LNUrlResponse_Withdraw)(nil),
@@ -7096,7 +7180,7 @@ func file_messages_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_messages_proto_rawDesc,
 			NumEnums:      4,
-			NumMessages:   80,
+			NumMessages:   81,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -7223,35 +7307,50 @@ type BreezAPIServer interface {
 	PayInvoice(context.Context, *PayInvoiceRequest) (*PaymentResponse, error)
 	RestartDaemon(context.Context, *RestartDaemonRequest) (*RestartDaemonReply, error)
 	ListPayments(context.Context, *ListPaymentsRequest) (*PaymentsList, error)
+	//	mustEmbedUnimplementedBreezAPIServer()
 }
 
-// UnimplementedBreezAPIServer can be embedded to have forward compatible implementations.
-type UnimplementedBreezAPIServer struct {
-}
+// UnimplementedBreezAPIServer must be embedded to have forward compatible implementations.
+type UnimplementedBreezAPIServer struct{}
 
-func (*UnimplementedBreezAPIServer) GetLSPList(context.Context, *LSPListRequest) (*LSPList, error) {
+func (UnimplementedBreezAPIServer) GetLSPList(context.Context, *LSPListRequest) (*LSPList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLSPList not implemented")
 }
-func (*UnimplementedBreezAPIServer) ConnectToLSP(context.Context, *ConnectLSPRequest) (*ConnectLSPReply, error) {
+
+func (UnimplementedBreezAPIServer) ConnectToLSP(context.Context, *ConnectLSPRequest) (*ConnectLSPReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConnectToLSP not implemented")
 }
-func (*UnimplementedBreezAPIServer) AddFundInit(context.Context, *AddFundInitRequest) (*AddFundInitReply, error) {
+
+func (UnimplementedBreezAPIServer) AddFundInit(context.Context, *AddFundInitRequest) (*AddFundInitReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddFundInit not implemented")
 }
-func (*UnimplementedBreezAPIServer) GetFundStatus(context.Context, *FundStatusRequest) (*FundStatusReply, error) {
+
+func (UnimplementedBreezAPIServer) GetFundStatus(context.Context, *FundStatusRequest) (*FundStatusReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFundStatus not implemented")
 }
-func (*UnimplementedBreezAPIServer) AddInvoice(context.Context, *AddInvoiceRequest) (*AddInvoiceReply, error) {
+
+func (UnimplementedBreezAPIServer) AddInvoice(context.Context, *AddInvoiceRequest) (*AddInvoiceReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddInvoice not implemented")
 }
-func (*UnimplementedBreezAPIServer) PayInvoice(context.Context, *PayInvoiceRequest) (*PaymentResponse, error) {
+
+func (UnimplementedBreezAPIServer) PayInvoice(context.Context, *PayInvoiceRequest) (*PaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PayInvoice not implemented")
 }
-func (*UnimplementedBreezAPIServer) RestartDaemon(context.Context, *RestartDaemonRequest) (*RestartDaemonReply, error) {
+
+func (UnimplementedBreezAPIServer) RestartDaemon(context.Context, *RestartDaemonRequest) (*RestartDaemonReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RestartDaemon not implemented")
 }
-func (*UnimplementedBreezAPIServer) ListPayments(context.Context, *ListPaymentsRequest) (*PaymentsList, error) {
+
+func (UnimplementedBreezAPIServer) ListPayments(context.Context, *ListPaymentsRequest) (*PaymentsList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPayments not implemented")
+}
+
+// func (UnimplementedBreezAPIServer) mustEmbedUnimplementedBreezAPIServer() {}
+
+// UnsafeBreezAPIServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BreezAPIServer will
+// result in compilation errors.
+type UnsafeBreezAPIServer interface { //	mustEmbedUnimplementedBreezAPIServer()
 }
 
 func RegisterBreezAPIServer(s *grpc.Server, srv BreezAPIServer) {
