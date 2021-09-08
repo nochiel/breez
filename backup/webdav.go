@@ -9,13 +9,16 @@ import (
 	"net/url"
 	"path/filepath"
 	"strings"
+
+	"github.com/breez/breez/tor"
 )
 
 // A client represents a client connection to a {own|next}cloud
 type WebdavClient struct {
-	Url      *url.URL
-	Username string
-	Password string
+	Url       *url.URL
+	Username  string
+	Password  string
+	TorConfig *tor.TorConfig
 }
 
 type WebdavRequestError struct {
@@ -57,6 +60,7 @@ type FilePropStats struct {
 	XMLName xml.Name   `xml:"propstat"`
 	props   []FileProp `xml:"prop"`
 }
+
 type FileProp struct {
 	XMLName      xml.Name `xml:"prop"`
 	LastModified string   `xml:"getlastmodified"`
@@ -164,11 +168,26 @@ func (c *WebdavClient) ListDir(path string) (*ListFileResponse, error) {
 	return &response, err
 }
 
-func (c *WebdavClient) sendWebDavRequest(request string, path string, data []byte, headers map[string]string) ([]byte, error) {
-	fmt.Printf("webdav request %v: %v\n", request, path)
+func (c *WebdavClient) sendWebDavRequest(
+	request string,
+	path string,
+	data []byte,
+	headers map[string]string,
+) ([]byte, error) {
+	fmt.Printf("sendWebDavRequest %v: %v\n", request, path)
 
-	client := &http.Client{}
-	//joined := strings.Join([]string{c.Url.String(), relativeURL}, "/")
+	var client *http.Client
+	var err error
+	if t := c.TorConfig; t != nil {
+		fmt.Printf("sendWebDavRequest: proxying request using tor with config %+v.\n", *t)
+		client, err = t.NewHttpClient()
+		if err != nil {
+			return nil, fmt.Errorf("sendWebDavRequest: unable to create tor http client: %w", err)
+		}
+	} else {
+		client = &http.Client{}
+	}
+	// joined := strings.Join([]string{c.Url.String(), relativeURL}, "/")
 	joined := joinPath(c.Url.String(), path)
 	req, err := http.NewRequest(request, joined, bytes.NewReader(data))
 	if err != nil {
@@ -205,7 +224,6 @@ func (c *WebdavClient) sendWebDavRequest(request string, path string, data []byt
 				return nil, err
 			}
 		}
-
 	}
 	return body, nil
 }
