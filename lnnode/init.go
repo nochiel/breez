@@ -11,6 +11,7 @@ import (
 	"github.com/breez/breez/config"
 	"github.com/breez/breez/db"
 	breezlog "github.com/breez/breez/log"
+	"github.com/breez/breez/tor"
 	"github.com/btcsuite/btcd/btcec"
 	"github.com/btcsuite/btclog"
 	"github.com/lightningnetwork/lnd/channeldb"
@@ -69,6 +70,8 @@ type Daemon struct {
 	ntfnServer          *subscribe.Server
 	quitChan            chan struct{}
 	startBeforeSync     bool
+
+	TorConfig *tor.TorConfig
 }
 
 // NewDaemon is used to create a new daemon that wraps a lightning
