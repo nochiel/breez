@@ -78,6 +78,7 @@ func (a *App) Start(torConfig *data.TorConfig) error {
 		a.lnDaemon.TorConfig = _torConfig
 
 	} else {
+	    a.log.Infof("app.Start: starting without Tor.")
 
 		a.lnDaemon.TorConfig = nil
 
