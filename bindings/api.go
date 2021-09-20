@@ -182,14 +182,12 @@ func SetBackupEncryptionKey(key []byte, encryptionType string) error {
 Start the lightning client
 */
 func Start(torConfig []byte) error {
-
 	_torConfig := &data.TorConfig{}
-	fmt.Println("api.go: Start: Using tor config to configure app.")
 	if err := proto.Unmarshal(torConfig, _torConfig); err != nil {
 		return err
 	}
 
-	fmt.Println("api.go: Start")
+	Log(fmt.Sprintf("api.go: Start: _torConfig: %v", *_torConfig), "INFO")
 	err := getBreezApp().Start(_torConfig)
 	if err != nil {
 		return err
