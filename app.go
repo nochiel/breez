@@ -70,25 +70,28 @@ func (a *App) Start(torConfig *data.TorConfig) error {
 		will only affect newly created backup providers. Therefore, we
 		reset the current backup provider's torConfig pointer here.
 		*/
-		provider := a.BackupManager.GetProvider()
-		provider.SetTor(_torConfig)
-		a.BackupManager.SetProvider(provider)
+		if provider := a.BackupManager.GetProvider(); provider != nil {
+			provider.SetTor(_torConfig)
+			a.BackupManager.SetProvider(provider)
+		}
 
 		a.BackupManager.TorConfig = _torConfig
 		a.lnDaemon.TorConfig = _torConfig
 
 	} else {
-	    a.log.Infof("app.Start: starting without Tor.")
+		a.log.Info("app.Start: starting without Tor.")
 
 		a.lnDaemon.TorConfig = nil
 
 		a.BackupManager.TorConfig = nil
-		provider := a.BackupManager.GetProvider()
-		provider.SetTor(nil)
-		a.BackupManager.SetProvider(provider)
+		if provider := a.BackupManager.GetProvider(); provider != nil {
+			provider.SetTor(nil)
+			a.BackupManager.SetProvider(provider)
+		}
 
 	}
 
+	a.log.Info("app.start: starting services.")
 	services := []Service{
 		a.lnDaemon,
 		a.ServicesClient,
