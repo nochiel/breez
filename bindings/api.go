@@ -187,7 +187,7 @@ func Start(torConfig []byte) error {
 		return err
 	}
 
-	Log(fmt.Sprintf("api.go: Start: _torConfig: %v", *_torConfig), "INFO")
+	Log(fmt.Sprintf("api.go: Start: _torConfig: %+v", *_torConfig), "INFO")
 	err := getBreezApp().Start(_torConfig)
 	if err != nil {
 		return err
