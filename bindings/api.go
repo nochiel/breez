@@ -178,6 +178,18 @@ func SetBackupEncryptionKey(key []byte, encryptionType string) error {
 	return getBreezApp().BackupManager.SetEncryptionKey(encKey, encryptionType)
 }
 
+
+func TestBackupAuth(provider, authData string) error {
+        Log("api.go: TestBackupAuth.", "INFO")
+	manager := getBreezApp().BackupManager
+	if err := manager.SetBackupProvider(provider, authData); err != nil {
+		return errors.New("Failed to set backup provider.")
+	}
+	p := manager.GetProvider()
+
+	return p.TestAuth()
+}
+
 /*
 Start the lightning client
 */
@@ -326,15 +338,6 @@ func AvailableSnapshots() (string, error) {
 	return string(bytes), nil
 }
 
-func TestBackupAuth(provider, authData string) error {
-	manager := getBreezApp().BackupManager
-	if err := manager.SetBackupProvider(provider, authData); err != nil {
-		return errors.New("Failed to set backup provider.")
-	}
-	p := manager.GetProvider()
-
-	return p.TestAuth()
-}
 
 /*
 DaemonReady returns the status of the daemon
