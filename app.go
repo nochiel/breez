@@ -1,6 +1,6 @@
 package breez
 
-//protoc -I data data/messages.proto --go_out=plugins=grpc:data
+// protoc -I data data/messages.proto --go_out=plugins=grpc:data
 
 import (
 	"bytes"
@@ -25,7 +25,7 @@ import (
 	"github.com/lightningnetwork/lnd/lnrpc/breezbackuprpc"
 )
 
-//Service is the interface to be implemeted by all breez services
+// Service is the interface to be implemeted by all breez services
 type Service interface {
 	Start() error
 	Stop() error
@@ -354,7 +354,7 @@ func (a *App) DeleteGraph() error {
 				channelEdgeInfo *channeldb.ChannelEdgeInfo,
 				_ *channeldb.ChannelEdgePolicy,
 				_ *channeldb.ChannelEdgePolicy) error {
-				//Add the channel only if it's not connected to our node
+				// Add the channel only if it's not connected to our node
 				if _, ok := ourCids[channelEdgeInfo.ChannelID]; !ok {
 					cids[channelEdgeInfo.ChannelID] = struct{}{}
 				}

@@ -338,7 +338,6 @@ func AvailableSnapshots() (string, error) {
 	return string(bytes), nil
 }
 
-
 /*
 DaemonReady returns the status of the daemon
 */
